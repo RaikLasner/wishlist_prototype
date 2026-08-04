@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damen-Jeans - Purefashion Prototyp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #222;
+            background: #fff;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        .header {
+            background: #000;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            width: 176px;
+            height: 75px;
+            display: block;
+        }
+
+        /* Navigation - Modern Fashion Style */
+        .nav {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-container ul {
+            flex: 1;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            white-space: nowrap;
+            justify-content: center;
+        }
+
+        .nav li a {
+            display: block;
+            padding: 20px 16px;
+            font-size: 12px;
+            color: #222;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav li a:hover {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        .nav li.active a {
+            font-weight: 600;
+            border-bottom-color: #000;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .nav-icon:hover {
+            opacity: 0.6;
+        }
+
+        .nav-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: #222;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .nav-search {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .nav-search input {
+            width: 140px;
+            padding: 10px 36px 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 13px;
+            font-family: inherit;
+            background: #f8f8f8;
+            color: #222;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .nav-search input:focus {
+            border-color: #000;
+            background: #fff;
+        }
+
+        .nav-search input::placeholder {
+            color: #999;
+        }
+
+        .nav-search-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        /* Main Layout - Modern Style */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Sidebar - Modern Fashion Style */
+        .sidebar {
+            width: 240px;
+            flex-shrink: 0;
+            padding-right: 24px;
+        }
+
+        .filter-section {
+            margin-bottom: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 16px;
+        }
+
+        .filter-section.collapsed {
+            padding-bottom: 0;
+        }
+
+        .filter-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            height: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin: 0;
+            color: #222;
+        }
+
+        .filter-title::after {
+            content: "+";
+            font-size: 18px;
+            color: #222;
+            flex-shrink: 0;
+            font-weight: 300;
+        }
+
+        .filter-title.no-arrow::after {
+            display: none;
+        }
+
+        .filter-section.collapsed .filter-list,
+        .filter-section.collapsed .show-more,
+        .filter-section.collapsed .price-range-groups,
+        .filter-section.collapsed .price-inputs,
+        .filter-section.collapsed .price-slider,
+        .filter-section.collapsed .price-range-submit,
+        .filter-section.collapsed .custom-select {
+            display: none;
+        }
+
+        .filter-section.collapsed .filter-title::after {
+            content: "+";
+        }
+
+        .filter-section:not(.collapsed) .filter-title::after {
+            content: "−";
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-list li {
+            margin-bottom: 8px;
+        }
+
+        .filter-list a {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .filter-list a:hover {
+            color: #000;
+        }
+
+        .filter-list .count {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #444;
+            cursor: pointer;
+            padding: 4px 0;
+        }
+
+        .filter-checkbox:hover {
+            color: #000;
+        }
+
+        .filter-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #000;
+            border-radius: 3px;
+        }
+
+        .filter-checkbox input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #000;
+        }
+
+        /* Zustand pill buttons - Modern Style */
+        .condition-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            list-style: none;
+        }
+        .condition-pills li {
+            padding: 0;
+        }
+        .condition-pill {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 25px;
+            background: #fff;
+            color: #222;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: all 0.2s;
+        }
+        .condition-pill:hover {
+            border-color: #000;
+        }
+        .condition-pill input[type="radio"] {
+            display: none;
+        }
+        .condition-pill.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        .price-range-groups {
+            margin-bottom: 12px;
+        }
+
+        .price-range-item {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            height: 44px;
+            line-height: 44px;
+            cursor: pointer;
+        }
+
+        .price-range-item:hover {
+            color: #000;
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .price-input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0 12px;
+            background: #f0f0f0;
+        }
+
+        .price-input-group input {
+            width: 55px;
+            padding: 10px 4px;
+            border: none;
+            font-size: 14px;
+            outline: none;
+            background: transparent;
+        }
+
+        .price-input-group .currency {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .price-separator {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .price-slider {
+            position: relative;
+            height: 10px;
+            margin: 15px 5px;
+        }
+
+        .price-slider-track {
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            top: 2px;
+        }
+
+        .price-slider-fill {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: hsl(0, 0%, 5%);
+            border-radius: 3px;
+        }
+
+        .price-slider-handles {
+            position: relative;
+            width: 100%;
+        }
+
+        .price-slider-handle {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 50%;
+            top: -8px;
+            cursor: pointer;
+        }
+
+        .handle-left {
+            left: 0;
+        }
+
+        .handle-right {
+            right: 0;
+        }
+
+        .price-range-submit {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+            border-radius: 3px;
+            font-size: 13px;
+            font-family: inherit;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .price-range-submit:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .show-more {
+            font-size: 12px;
+            color: #000;
+            cursor: pointer;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+        }
+
+        .breadcrumb-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px;
+        }
+
+        .breadcrumb {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb a:hover {
+            color: #000;
+        }
+
+        .breadcrumb-separator {
+            color: #ccc;
+        }
+
+        .page-header {
+            margin-bottom: 24px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .results-count {
+            font-size: 13px;
+            color: #666;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        .info-icon {
+            display: none;
+        }
+
+        .seo-intro {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .ai-notice {
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .sort-bar {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .sort-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .sort-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .custom-select {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-select select {
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
+            background: #fff;
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            min-width: 220px;
+        }
+
+        .sidebar-select {
+            width: 100%;
+        }
+
+        .sidebar-select select {
+            width: 100%;
+            min-width: auto;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            color: #000;
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        /* Product Grid - ASOS Style */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            justify-content: start;
+        }
+
+        .product-card {
+            background: #fff;
+            text-align: left;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.03);
+        }
+
+        .product-card:hover .product-hover-overlay {
+            opacity: 1;
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #f5f5f5;
+            aspect-ratio: 3 / 4;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .product-wishlist {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .product-card:hover .product-wishlist {
+            opacity: 1;
+        }
+
+        .product-wishlist:hover {
+            transform: scale(1.1);
+        }
+
+        .product-wishlist svg {
+            width: 18px;
+            height: 18px;
+            stroke: #222;
+            stroke-width: 2;
+            fill: none;
+            transition: fill 0.2s, stroke 0.2s;
+        }
+
+        .product-wishlist:hover svg,
+        .product-wishlist.active svg {
+            fill: #e31e24;
+            stroke: #e31e24;
+        }
+
+        .product-hover-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            padding: 40px 12px 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-brand {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-weight: 500;
+            display: block;
+        }
+
+        .product-title {
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: #222;
+            line-height: 1.4;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 15px;
+            font-weight: 600;
+            color: #000;
+            margin-top: 6px;
+        }
+
+        .product-price-old {
+            font-size: 13px;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: 400;
+        }
+
+        .product-offers {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .product-action {
+            width: 100%;
+        }
+
+        .product-action a {
+            display: block;
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            padding: 0;
+            background: #fff;
+            color: #000;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+            border-radius: 0;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .product-action a:hover {
+            background: #222;
+            color: #fff;
+        }
+
+        .product-shop-info {
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .product-shop-info .shop-name {
+            display: inline;
+            font-size: 11px;
+            color: #fff;
+            font-style: normal;
+        }
+
+        .product-shop-info .shop-shipping {
+            display: inline;
+            font-size: 11px;
+            color: rgba(255,255,255,0.8);
+            font-style: normal;
+        }
+
+        .product-shop-info .shop-shipping::before {
+            content: " · ";
+        }
+
+        /* Pagination - Modern Style */
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #eee;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .pagination a, .pagination span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.2s;
+        }
+
+        .pagination a:hover {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        .pagination .active {
+            background: #222;
+            color: #fff;
+        }
+
+        .next-page-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background: #222;
+            transition: all 0.2s;
+        }
+
+        .next-page-btn:hover {
+            background: #444;
+        }
+
+        .report-link {
+            display: none;
+        }
+
+        /* Popular Brands - Modern Style */
+        .popular-brands {
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid #eee;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+        }
+
+        .brands-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .brands-list a {
+            font-size: 13px;
+            color: #222;
+            padding: 10px 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .brands-list a:hover {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        /* SEO Text */
+        .seo-text {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .seo-text h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .seo-text p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        /* Footer - Modern Fashion Style */
+        .footer {
+            background: #000;
+            margin-top: 64px;
+            padding: 64px 24px 32px;
+            color: #fff;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-list {
+            list-style: none;
+        }
+
+        .footer-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-list a {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+        }
+
+        .footer-list a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Wishlist Toggle & Badge */
+        .wishlist-toggle {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .wishlist-toggle svg {
+            width: 22px;
+            height: 22px;
+            stroke: #222;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .wishlist-badge {
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            background: #e31e24;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        /* Wishlist Sidebar Overlay */
+        .wishlist-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s;
+        }
+
+        .wishlist-overlay.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .wishlist-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .wishlist-sidebar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 420px;
+            max-width: 100%;
+            background: #fff;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .wishlist-overlay.open .wishlist-sidebar {
+            transform: translateX(0);
+        }
+
+        .wishlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .wishlist-header-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .wishlist-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            color: #222;
+        }
+
+        .wishlist-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 24px;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            color: #999;
+            padding: 60px 0;
+            font-size: 14px;
+        }
+
+        .wishlist-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: flex-start;
+        }
+
+        .wishlist-item-image {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #f5f5f5;
+            flex-shrink: 0;
+        }
+
+        .wishlist-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .wishlist-item-brand {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .wishlist-item-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 4px;
+            color: #222;
+        }
+
+        .wishlist-item-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e31e24;
+            margin-top: 8px;
+        }
+
+        .wishlist-item-remove {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            padding: 4px;
+            flex-shrink: 0;
+            transition: color 0.2s;
+        }
+
+        .wishlist-item-remove:hover {
+            color: #e31e24;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 24px;
+            height: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .burger-menu span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #222;
+            transition: all 0.3s;
+        }
+
+        /* Responsive - Modern Breakpoints */
+        @media (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .nav ul {
+                gap: 0;
+            }
+            .nav li a {
+                padding: 20px 12px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+            }
+            .sidebar {
+                width: 200px;
+            }
+            .nav-search input {
+                width: 160px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+                order: 3;
+            }
+
+            .nav .nav-menu {
+                display: none !important;
+            }
+
+            .nav-container {
+                padding: 12px 16px;
+                justify-content: space-between;
+            }
+
+            .logo {
+                order: -1;
+            }
+
+            .logo-img {
+                width: auto;
+                height: 30px;
+            }
+
+            .nav-search {
+                order: 1;
+            }
+
+            .nav-search input {
+                width: 140px;
+                padding: 10px 36px 10px 14px;
+                border: 1px solid #ddd;
+                border-radius: 25px;
+                background: #f8f8f8;
+            }
+
+            .nav-icons {
+                display: flex;
+                order: 2;
+            }
+
+            .pagination-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                display: none;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+            .page-title {
+                font-size: 22px;
+            }
+            .main-container {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .nav-icons {
+                gap: 12px;
+            }
+            .nav-icon {
+                width: 36px;
+                height: 36px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header + Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <button class="burger-menu" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="#" class="logo"><img src="purefashion_de-inverted.gif" alt="PUREFASHION." class="logo-img"></a>
+            <ul class="nav-menu">
+                <li><a href="#">Accessoires</a></li>
+                <li class="active"><a href="#">Damen</a></li>
+                <li><a href="#">Handarbeit</a></li>
+                <li><a href="#">Herren</a></li>
+                <li><a href="#">Kinder & Babys</a></li>
+                <li><a href="#">Schmuck</a></li>
+                <li><a href="#">Schuhe</a></li>
+                <li><a href="#">Taschen & Gepäck</a></li>
+                <li><a href="#">Uhren</a></li>
+            </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Suche..." aria-label="Suche">
+                <span class="nav-search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </span>
+            </div>
+            <div class="nav-icons">
+                <button class="nav-icon wishlist-toggle" title="Merkliste" aria-label="Merkliste öffnen">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="wishlist-badge" style="display:none;">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb">
+            <a href="#">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="#">Damen</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>Jeans</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="filter-section">
+                <div class="filter-title no-arrow">Sortierung</div>
+                <div class="custom-select sidebar-select">
+                    <select>
+                        <option>Beliebteste Ergebnisse</option>
+                        <option>Preis aufsteigend</option>
+                        <option>Preis absteigend</option>
+                        <option>Neuheiten</option>
+                    </select>
+                    <span class="select-arrow">&#10095;</span>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">Artikelzustand</div>
+                <ul class="condition-pills">
+                    <li><label class="condition-pill"><input type="radio" name="condition"> Neu &amp; gebraucht</label></li>
+                    <li><label class="condition-pill active"><input type="radio" name="condition" checked> Neu</label></li>
+                    <li><label class="condition-pill"><input type="radio" name="condition"> Gebraucht</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">Preis</div>
+                <div class="price-range-groups">
+                    <a href="#" class="price-range-item">0,00 € - 34,99 €</a>
+                    <a href="#" class="price-range-item">35,00 € - 52,99 €</a>
+                    <a href="#" class="price-range-item">53,00 € - 75,99 €</a>
+                    <a href="#" class="price-range-item">76,00 € - 99,99 €</a>
+                    <a href="#" class="price-range-item">über 100,00 €</a>
+                </div>
+                <div class="price-inputs">
+                    <div class="price-input-group">
+                        <input type="text" placeholder="ab" aria-label="Preis ab">
+                        <span class="currency">€</span>
+                    </div>
+                    <span class="price-separator">bis</span>
+                    <div class="price-input-group">
+                        <input type="text" placeholder="bis" aria-label="Preis bis">
+                        <span class="currency">€</span>
+                    </div>
+                </div>
+                <div class="price-slider">
+                    <div class="price-slider-track">
+                        <div class="price-slider-fill"></div>
+                    </div>
+                    <div class="price-slider-handles">
+                        <div class="price-slider-handle handle-left"></div>
+                        <div class="price-slider-handle handle-right"></div>
+                    </div>
+                </div>
+                <button class="price-range-submit">Übernehmen</button>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">Marke</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> Levi's</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Tommy Hilfiger</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> G-Star</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Diesel</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Wrangler</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Lee</label></li>
+                </ul>
+                <span class="show-more">+ Mehr anzeigen</span>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Farbe</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> Blau</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Schwarz</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Grau</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Weiß</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Größe</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> 34</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 36</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 38</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 40</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 42</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 44</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Konfektionsgröße</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> 25</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 26</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 27</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 28</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 29</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 30</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 31</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 32</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Hosenlänge</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> lang</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> kurz</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 7/8 Länge</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> 3/4 Länge</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> knielang</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Leibhöhe</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> normal-waist</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> high-waist</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> low-waist</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Look</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> Casual</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Business</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Material</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> Baumwolle</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Stretch</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Denim</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Muster</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> unifarben</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> geblümt</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> gestreift</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Leo-Print</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Verschluss</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> mit Reißverschluss</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> mit Knopfleiste</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Waschung</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> Used Look</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Vintage</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Rinse Washed</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Bleached</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Stone Washed</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> Dark Denim</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section collapsed">
+                <div class="filter-title">Shops</div>
+                <ul class="filter-list">
+                    <li><label class="filter-checkbox"><input type="checkbox"> Amazon</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> g-star.com/de</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> sarenza.de</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> goldner-fashion.com</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> emp.de</label></li>
+                    <li><label class="filter-checkbox"><input type="checkbox"> fashionette.de</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">Suchvorschläge</div>
+                <ul class="filter-list search-suggestions">
+                    <li><a href="#">levis jeans</a></li>
+                    <li><a href="#">beste jeans für kleine frauen</a></li>
+                    <li><a href="#">levis levis jeans</a></li>
+                    <li><a href="#">levi s damen jeans</a></li>
+                    <li><a href="#">levis jeans sale</a></li>
+                    <li><a href="#">esmara jeans</a></li>
+                    <li><a href="#">schwarze skinny jeans</a></li>
+                    <li><a href="#">levis jeans levis</a></li>
+                    <li><a href="#">gang gerda relaxed fit jeans</a></li>
+                    <li><a href="#">jeans frau</a></li>
+                    <li><a href="#">cambio tess jeans</a></li>
+                    <li><a href="#">jeans für frauen ab 60</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <main class="content">
+            <div class="page-header">
+                <h1 class="page-title">Damen-Jeans <span class="results-count">(405.970 Angebote*) <span class="info-icon" title="Anzahl der Angebote">&#9432;</span></span></h1>
+            </div>
+
+
+            <!-- Product Grid -->
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/angels-skinny-jeans-mit-schmalem-bein-in-dunkelblau-d34-l32-slim-fit-200t1800254b6378e22d4e48c58d74ee0761db6a9d22e92.jpg" alt="Angels Skinny Jeans" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">3 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab baur.de</span>
+                                <span class="shop-shipping">Versand 5,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Angels</div>
+                    <div class="product-title">Skinny-Fit-Jeans "Slim" Dunkelblau</div>
+                    <div class="product-price">49,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/raphaela-by-brax-damen-five-pocket-hose-style-ina-fay-stoned-blau-gr-34-200t1801f0ae4d5b316aaedfb2ee46d809b2995643230aa.jpg" alt="Raphaela by Brax" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">5 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab otto.de</span>
+                                <span class="shop-shipping">Versand 4,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Raphaela by Brax</div>
+                    <div class="product-title">Five Pocket Hose "Ina Fay"</div>
+                    <div class="product-price">79,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/cross-anya-schwarze-jeans-mit-schmalem-beinverlauf-w33-l32-slim-fit-200t180ed7ec8ccb97511660ec2f05fbf910bbdadc62fa8.jpg" alt="Cross Anya Jeans" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">2 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab jeans-direct.de</span>
+                                <span class="shop-shipping">Versand 3,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Cross</div>
+                    <div class="product-title">Slim-Fit-Jeans "Anya" Schwarz</div>
+                    <div class="product-price">59,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/reell-damen-jeanshose-women-betty-baggy-2108-002-02-124-black-wash-50-50-26-200t18078cc1f07e31d1e0b26ce7ca61f533eee49912e77.jpg" alt="Reell Betty Baggy" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="#">Zum Shop</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab skatedeluxe.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Reell</div>
+                    <div class="product-title">Baggy-Jeans "Betty" Black Wash</div>
+                    <div class="product-price">69,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/slim-fit-jeans-angels-skinny-damen-gr-40-laenge-30-blau-mid-blau-used-denim-jeans-obermaterial-93-ba-200t180df338a46ac537721f6fa33b6d0ff56e38d4a3a13.jpg" alt="Angels Skinny" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">4 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab baur.de</span>
+                                <span class="shop-shipping">Versand 5,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Angels</div>
+                    <div class="product-title">Slim-Fit-Jeans "Skinny" Mid Blau Used</div>
+                    <div class="product-price">54,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/raphaela-by-brax-style-pamina-dark-blue-gr-40-200t180d6c50485ac5c5d505894652d34eb61db6639263d.jpg" alt="Raphaela Pamina" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">6 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab brax.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Raphaela by Brax</div>
+                    <div class="product-title">Jeans "Pamina" Dark Blue</div>
+                    <div class="product-price">89,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/babista-regular-fit-schlupfjeans-blau-einfarbig-200t180aef544f9a5719aef696c10345b9db0fa08b128b3.jpg" alt="Babista Schlupfjeans" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">2 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab klingel.de</span>
+                                <span class="shop-shipping">Versand 5,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Babista</div>
+                    <div class="product-title">Schlupfjeans Regular Fit Blau</div>
+                    <div class="product-price">39,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/weite-jeans-gang-gang-jeans-wide-fit-94amelie-wide-damen-gr-30-blau-denim-jeans-99-baumwolle-1-elast-200t180ed33447eeb7836cf12cabb142516a7117d30399b.jpg" alt="Gang Amelie Wide" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">3 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab otto.de</span>
+                                <span class="shop-shipping">Versand 4,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Gang</div>
+                    <div class="product-title">Wide-Fit-Jeans "94Amelie" Blau</div>
+                    <div class="product-price">79,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/levis-damen-jeans-78-crop-501-in-blauem-luxor-w27-l30-regular-fit-200t18079c5960eb6fa6e5f644e560c4995e03ba3252c6e.jpg" alt="Levi's 501 Crop" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">8 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab amazon.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Levi's</div>
+                    <div class="product-title">Crop-Jeans "501" Luxor Blau</div>
+                    <div class="product-price">89,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/weite-jeans-gang-gang-jeans-wide-fit-94amelie-wide-damen-gr-30-blau-denim-jeans-99-baumwolle-1-elast-200t180ed33447eeb7836cf12cabb142516a7117d30399b.jpg" alt="Garcia Celia Wide Leg" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">4 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab zalando.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Garcia</div>
+                    <div class="product-title">Wide-Leg-Jeans "Celia" Medium Used</div>
+                    <div class="product-price">69,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/raphaela-by-brax-style-pamina-dark-blue-gr-40-200t180d6c50485ac5c5d505894652d34eb61db6639263d.jpg" alt="Wrangler Sienna" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">5 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab jeans-direct.de</span>
+                                <span class="shop-shipping">Versand 3,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Wrangler</div>
+                    <div class="product-title">Jeans "Sienna" Rebel Blue</div>
+                    <div class="product-price">74,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/vero-moda-damen-jeans-skinny-fit-peach-in-black-denim-s-l32-skinny-fit-200t1802abe58254ac3fe6b2a0665dc24dcd9731a483009.jpg" alt="Vero Moda Skinny" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">3 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab aboutyou.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Vero Moda</div>
+                    <div class="product-title">Skinny-Fit-Jeans "Peach" Black</div>
+                    <div class="product-price">34,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/5-pocket-jeans-brax-style-mary-damen-gr-38k-19-kurzgroessen-blau-denim-jeans-75-baumwolle-17-polyest-200t1806236dfaa62f335cac3872ea4726d6130910d39f4.jpg" alt="Brax Style Mary" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">4 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab brax.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Brax</div>
+                    <div class="product-title">5-Pocket-Jeans "Mary" Kurzgröße</div>
+                    <div class="product-price">99,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/ankle-jeans-only-onlblush-ankle-jeans-mit-destroyed-look-fuer-trendige-outfits-damen-gr-s-36-laenge-200t1803445a4280ac74f59313679235b39d841ea2e3a31.jpg" alt="Only Ankle Jeans" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">2 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab aboutyou.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Only</div>
+                    <div class="product-title">Ankle-Jeans "Blush" Destroyed Look</div>
+                    <div class="product-price">39,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/bequeme-jeans-raphaela-by-brax-style-pamina-fun-damen-gr-44k-22-kurzgroessen-weiss-denim-jeans-54-ba-200t180d4347757437b164dceae4e45380bed93ca303a4c.jpg" alt="Raphaela Pamina Fun" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">3 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab baur.de</span>
+                                <span class="shop-shipping">Versand 5,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Raphaela by Brax</div>
+                    <div class="product-title">Jeans "Pamina Fun" Weiß</div>
+                    <div class="product-price">109,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/carhartt-wip-damen-jeans-w-pierce-pant-blau-27-200t1803dcdad46a3bfd4e55009983b07b02d9eaba12740.jpg" alt="Carhartt WIP Pierce" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">2 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab zalando.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Carhartt WIP</div>
+                    <div class="product-title">Jeans "Pierce Pant" Blau</div>
+                    <div class="product-price">89,00 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/jeans-brax-denim-38-200t18033f67b1d18e3fe4333739edfd8c60ed37eb81d07.jpg" alt="Brax Denim" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">5 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab brax.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Brax</div>
+                    <div class="product-title">Denim-Jeans Klassisch</div>
+                    <div class="product-price">119,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/regular-fit-jeans-soccx-damen-gr-34-laenge-34-schwarz-indigo-jogg-sweatware-material-68-baumwolle-16-200t1802ce3d0ff371a72467bcf1e170611d10daef13a2b.jpg" alt="Soccx Regular Fit" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">2 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab camp-david.de</span>
+                                <span class="shop-shipping">Versand 4,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Soccx</div>
+                    <div class="product-title">Jogg-Jeans Regular Fit Schwarz</div>
+                    <div class="product-price">79,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/relax-fit-jeans-gang-94amelie-damen-gr-29-n-gr-blau-sea-destroy-denim-jeans-obermaterial-90-baumwoll-200t1808e59b7c578a2a3a244b8093e5fe00b8488103a20.jpg" alt="Gang Amelie Relax" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">3 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab otto.de</span>
+                                <span class="shop-shipping">Versand 4,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Gang</div>
+                    <div class="product-title">Relax-Fit-Jeans "94Amelie" Sea Destroy</div>
+                    <div class="product-price">84,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/slim-fit-jeans-angels-cici-damen-gr-46-laenge-30-blau-night-blau-denim-jeans-obermaterial-93-baumwol-200t180047376d639c1317b749d77f62e60f71b6ebb3968.jpg" alt="Angels Cici" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">4 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab baur.de</span>
+                                <span class="shop-shipping">Versand 5,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Angels</div>
+                    <div class="product-title">Slim-Fit-Jeans "Cici" Night Blau</div>
+                    <div class="product-price">59,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/slim-fit-jeans-only-carmakoma-carsui-mid-slim-dnm-rea286-noos-damen-gr-52-laenge-32-blau-light-blau-200t1801a4175edd0942919e5841f7dd90b028152f338e5.jpg" alt="Only Carmakoma" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">2 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab aboutyou.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Only Carmakoma</div>
+                    <div class="product-title">Slim-Fit-Jeans "Carsui" Light Blau</div>
+                    <div class="product-price">44,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/stretch-jeans-angels-lara-damen-gr-40-laenge-28-blau-mid-blau-used-denim-jeans-obermaterial-92-baumw-200t180dee0ae02ea75b128c4e09288e3b6e13da08f3a73.jpg" alt="Angels Lara" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">5 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab baur.de</span>
+                                <span class="shop-shipping">Versand 5,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Angels</div>
+                    <div class="product-title">Stretch-Jeans "Lara" Mid Blau Used</div>
+                    <div class="product-price">64,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/weite-jeans-levis-jeans-318-shaping-damen-gr-30-laenge-32-cool-satisfaction-denim-jeans-obermaterial-200t180c324fbaa2f44c1f87ec17a9770293482982b3a49.jpg" alt="Levis 318 Shaping" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">6 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab amazon.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Levi's</div>
+                    <div class="product-title">Shaping-Jeans "318" Cool Satisfaction</div>
+                    <div class="product-price">94,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/jerseyhose-rabe-hose-damen-gr-44-normalgroessen-schwarz-90-baumwolle-8-polyester-2-elasthan-unifarbe-200t180aab61ef5bf9d97dae6239ac743f8d1321f0c3bfb.jpg" alt="Rabe Jerseyhose" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">2 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab peter-hahn.de</span>
+                                <span class="shop-shipping">Versand 5,95 €</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Rabe</div>
+                    <div class="product-title">Jerseyhose Schwarz Unifarben</div>
+                    <div class="product-price">49,95 €</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <button class="product-wishlist" title="Zur Merkliste hinzufügen">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <img src="images/levis-damen-jeans-78-crop-501-in-blauem-luxor-w27-l30-regular-fit-200t18079c5960eb6fa6e5f644e560c4995e03ba3252c6e.jpg" alt="Levi's 501 Original" class="product-image">
+                        <div class="product-hover-overlay">
+                            <div class="product-action"><a href="product_page_v1.html">7 Angebote vergleichen</a></div>
+                            <div class="product-shop-info">
+                                <span class="shop-name">ab amazon.de</span>
+                                <span class="shop-shipping">Kostenloser Versand</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-brand">Levi's</div>
+                    <div class="product-title">Original-Jeans "501" Stone Wash Blau</div>
+                    <div class="product-price">79,95 €</div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-wrapper">
+                <div class="pagination">
+                    <span class="active">1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                </div>
+                <a href="#" class="next-page-btn">Nächste Seite <span>&rsaquo;</span></a>
+                <a href="#" class="report-link">Rechtswidrige Inhalte melden</a>
+            </div>
+
+            <!-- Beliebte Marken -->
+            <div class="popular-brands">
+                <h3 class="section-title">Beliebte Marken</h3>
+                <div class="brands-list">
+                    <a href="#">Levi's</a>
+                    <a href="#">Tommy Hilfiger</a>
+                    <a href="#">G-Star RAW</a>
+                    <a href="#">Diesel</a>
+                    <a href="#">Wrangler</a>
+                    <a href="#">Lee</a>
+                    <a href="#">Replay</a>
+                    <a href="#">Pepe Jeans</a>
+                    <a href="#">Marc O'Polo</a>
+                    <a href="#">s.Oliver</a>
+                    <a href="#">Angels</a>
+                    <a href="#">Brax</a>
+                    <a href="#">Gang</a>
+                    <a href="#">Only</a>
+                    <a href="#">Vero Moda</a>
+                </div>
+            </div>
+
+            <!-- SEO Text -->
+            <div class="seo-text">
+                <h2>Damen Jeans - Der Klassiker für jeden Tag</h2>
+                <p>Damen Jeans gehören zu den absoluten Basics in jedem Kleiderschrank. Ob Skinny, Straight, Bootcut oder Wide Leg - bei purefashion.de finden Sie die perfekte Jeans für jeden Anlass und jeden Figurtyp. Entdecken Sie Top-Marken wie Levi's, Tommy Hilfiger, G-Star und viele mehr zu günstigen Preisen.</p>
+                <p>Von der klassischen Blue Jeans bis hin zu trendigen Destroyed-Looks bieten wir Ihnen eine riesige Auswahl an Damen-Jeans in allen Größen, Farben und Passformen. Vergleichen Sie die Preise verschiedener Anbieter und finden Sie Ihr Lieblingsstück zum besten Preis.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-title">Service</div>
+                    <ul class="footer-list">
+                        <li><a href="#">Hilfe & Kontakt</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Versand & Lieferung</a></li>
+                        <li><a href="#">Rückgabe</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Unternehmen</div>
+                    <ul class="footer-list">
+                        <li><a href="#">Über uns</a></li>
+                        <li><a href="#">Karriere</a></li>
+                        <li><a href="#">Presse</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Rechtliches</div>
+                    <ul class="footer-list">
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">AGB</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Zahlungsarten</div>
+                    <ul class="footer-list">
+                        <li><a href="#">PayPal</a></li>
+                        <li><a href="#">Kreditkarte</a></li>
+                        <li><a href="#">Rechnung</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Purefashion - Preisvergleich für Mode & Accessoires (Prototyp)
+            </div>
+        </div>
+    </footer>
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-overlay">
+        <div class="wishlist-backdrop"></div>
+        <div class="wishlist-sidebar">
+            <div class="wishlist-header">
+                <span class="wishlist-header-title">Merkliste</span>
+                <button class="wishlist-close" aria-label="Schließen">&times;</button>
+            </div>
+            <div class="wishlist-items">
+                <div class="wishlist-empty">Deine Merkliste ist leer</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        function getWishlist() {
+            try { return JSON.parse(localStorage.getItem('pf_wishlist')) || []; }
+            catch { return []; }
+        }
+
+        function saveWishlist(list) {
+            localStorage.setItem('pf_wishlist', JSON.stringify(list));
+        }
+
+        function updateBadge() {
+            var badge = document.querySelector('.wishlist-badge');
+            var count = getWishlist().length;
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'flex' : 'none';
+            }
+        }
+
+        function updateHeartStates() {
+            var wishlist = getWishlist();
+            var ids = wishlist.map(function(w) { return w.id; });
+            document.querySelectorAll('.product-card').forEach(function(card, i) {
+                var btn = card.querySelector('.product-wishlist');
+                if (btn) {
+                    var id = card.dataset.productId || String(i);
+                    if (ids.indexOf(id) >= 0) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        function renderWishlistItems() {
+            var container = document.querySelector('.wishlist-items');
+            var wishlist = getWishlist();
+            if (!container) return;
+
+            if (wishlist.length === 0) {
+                container.innerHTML = '<div class="wishlist-empty">Deine Merkliste ist leer</div>';
+                return;
+            }
+
+            container.innerHTML = wishlist.map(function(item) {
+                return '<div class="wishlist-item" data-id="' + item.id + '">' +
+                    '<img src="' + item.image + '" alt="' + item.title + '" class="wishlist-item-image">' +
+                    '<div class="wishlist-item-info">' +
+                        '<div class="wishlist-item-brand">' + item.brand + '</div>' +
+                        '<div class="wishlist-item-title">' + item.title + '</div>' +
+                        '<div class="wishlist-item-price">' + item.price + '</div>' +
+                    '</div>' +
+                    '<button class="wishlist-item-remove" title="Entfernen">' +
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
+                    '</button>' +
+                '</div>';
+            }).join('');
+
+            container.querySelectorAll('.wishlist-item-remove').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var id = btn.closest('.wishlist-item').dataset.id;
+                    removeFromWishlist(id);
+                });
+            });
+        }
+
+        function toggleWishlistItem(productId, productData) {
+            var wishlist = getWishlist();
+            var index = -1;
+            for (var i = 0; i < wishlist.length; i++) {
+                if (wishlist[i].id === productId) { index = i; break; }
+            }
+            if (index >= 0) {
+                wishlist.splice(index, 1);
+            } else {
+                wishlist.push({ id: productId, image: productData.image, brand: productData.brand, title: productData.title, price: productData.price });
+            }
+            saveWishlist(wishlist);
+            updateBadge();
+            updateHeartStates();
+            renderWishlistItems();
+        }
+
+        function removeFromWishlist(id) {
+            var wishlist = getWishlist().filter(function(w) { return w.id !== id; });
+            saveWishlist(wishlist);
+            updateBadge();
+            updateHeartStates();
+            renderWishlistItems();
+        }
+
+        // Assign IDs and bind product heart clicks
+        document.querySelectorAll('.product-card').forEach(function(card, i) {
+            var id = 'product-' + i;
+            card.dataset.productId = id;
+            var btn = card.querySelector('.product-wishlist');
+            if (btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var img = card.querySelector('.product-image');
+                    var brand = card.querySelector('.product-brand');
+                    var title = card.querySelector('.product-title');
+                    var price = card.querySelector('.product-price');
+                    toggleWishlistItem(id, {
+                        image: img ? img.src : '',
+                        brand: brand ? brand.textContent : '',
+                        title: title ? title.textContent : '',
+                        price: price ? price.textContent : ''
+                    });
+                });
+            }
+        });
+
+        // Sidebar toggle
+        var toggle = document.querySelector('.wishlist-toggle');
+        var overlay = document.querySelector('.wishlist-overlay');
+        var closeBtn = document.querySelector('.wishlist-close');
+        var backdrop = document.querySelector('.wishlist-backdrop');
+
+        if (toggle && overlay) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                renderWishlistItems();
+                overlay.classList.add('open');
+            });
+        }
+        if (closeBtn) closeBtn.addEventListener('click', function() { overlay.classList.remove('open'); });
+        if (backdrop) backdrop.addEventListener('click', function() { overlay.classList.remove('open'); });
+
+        // Escape key closes sidebar
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && overlay && overlay.classList.contains('open')) {
+                overlay.classList.remove('open');
+            }
+        });
+
+        // Init
+        updateBadge();
+        updateHeartStates();
+    })();
+    </script>
+</body>
+</html>
