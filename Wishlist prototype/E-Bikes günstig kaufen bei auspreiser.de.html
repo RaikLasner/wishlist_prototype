@@ -283,6 +283,62 @@
             flex: 0 0 auto;
         }
         .wl-item-remove:hover { color: #1e1e1e; }
+
+        /* Nicht mehr verfügbares Angebot */
+        .wl-item.wl-unavailable .wl-item-img {
+            filter: grayscale(1);
+            opacity: 0.5;
+        }
+        .wl-item.wl-unavailable .wl-item-title,
+        .wl-item.wl-unavailable .wl-item-shop {
+            color: #9b9b9b;
+        }
+        .wl-badge-unavailable {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #c0392b;
+            background: #fdecea;
+            border-radius: 4px;
+        }
+        .wl-item-oldprice {
+            font-size: 13px;
+            font-weight: 400;
+            color: #9b9b9b;
+            text-decoration: line-through;
+            margin-top: 4px;
+        }
+
+        /* Preis gefallen */
+        .wl-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+        .wl-price-row .wl-item-price { margin-top: 0; }
+        .wl-price-row .wl-price-was {
+            font-size: 13px;
+            font-weight: 400;
+            color: #9b9b9b;
+            text-decoration: line-through;
+        }
+        .wl-price-drop {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            margin-top: 6px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #22874c;
+            background: #e8f6ef;
+            border-radius: 4px;
+        }
+        .wl-price-drop svg { width: 13px; height: 13px; }
     </style>
     <script src="./E-Bikes günstig kaufen bei auspreiser.de_files/296056725224369" async=""></script><script async="" src="./E-Bikes günstig kaufen bei auspreiser.de_files/fbevents.js"></script><script type="module" src="./E-Bikes günstig kaufen bei auspreiser.de_files/index.module.js"></script><script type="text/javascript" id="afs-script" async="true" src="./E-Bikes günstig kaufen bei auspreiser.de_files/ads.js"></script></head>
     <body class="auspreiser-like">
@@ -3101,12 +3157,28 @@
                 return;
             }
             container.innerHTML = list.map(function (item) {
-                return '<div class="wl-item" data-id="' + escapeHtml(item.id) + '">' +
+                var priceBlock;
+                if (item.unavailable) {
+                    priceBlock = '<span class="wl-badge-unavailable">Nicht mehr verfügbar</span>' +
+                        (item.price ? '<div class="wl-item-oldprice">' + escapeHtml(item.price) + '</div>' : '');
+                } else if (item.priceWas) {
+                    priceBlock = '<div class="wl-price-row">' +
+                            '<span class="wl-item-price">' + escapeHtml(item.price) + '</span>' +
+                            '<span class="wl-price-was">' + escapeHtml(item.priceWas) + '</span>' +
+                        '</div>' +
+                        '<span class="wl-price-drop">' +
+                            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>' +
+                            escapeHtml(item.priceDrop) + ' günstiger' +
+                        '</span>';
+                } else {
+                    priceBlock = '<div class="wl-item-price">' + escapeHtml(item.price) + '</div>';
+                }
+                return '<div class="wl-item' + (item.unavailable ? ' wl-unavailable' : '') + '" data-id="' + escapeHtml(item.id) + '">' +
                     '<img class="wl-item-img" src="' + escapeHtml(item.image) + '" alt="">' +
                     '<div class="wl-item-info">' +
                         '<div class="wl-item-title">' + escapeHtml(item.title) + '</div>' +
                         (item.shop ? '<div class="wl-item-shop">' + escapeHtml(item.shop) + '</div>' : '') +
-                        '<div class="wl-item-price">' + escapeHtml(item.price) + '</div>' +
+                        priceBlock +
                     '</div>' +
                     '<button class="wl-item-remove" title="Entfernen" aria-label="Entfernen">' +
                         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
@@ -3162,7 +3234,34 @@
             });
         }
 
+        // Mock-up: einmalig ein "nicht mehr verfügbares" Angebot seeden,
+        // das der Nutzer zu einem früheren Zeitpunkt gemerkt hatte.
+        function seedUnavailableDemo() {
+            if (localStorage.getItem('auspreiser_wishlist_seeded_v2')) return;
+            localStorage.setItem('auspreiser_wishlist_seeded_v2', '1');
+            var list = getWishlist();
+            list.unshift({
+                id: 'demo-pricedrop-cube-reaction',
+                image: './E-Bikes günstig kaufen bei auspreiser.de_files/cube-reaction-hybrid-performance-600-indigoblue-n-reflex-2026-rh-xl-200t18055b57ea43cf6d0aeb3f253ad9faf6d8a6f562efd.jpg',
+                title: 'Cube Reaction Hybrid Performance 600 indigoblue´n´reflex 29 Zoll XL 2026',
+                shop: 'fitstore24.com',
+                price: '2.024,19 €',
+                priceWas: '2.299,00 €',
+                priceDrop: '274,81 €'
+            });
+            list.unshift({
+                id: 'demo-unavailable-kalkhoff-endeavour',
+                image: './E-Bikes günstig kaufen bei auspreiser.de_files/haibike-adventr-10-sand-black-2025-2026-low-l-200t180a4a2c7b8d6dd4e3c63972ce4a4d67cb503f52520.jpg',
+                title: 'Kalkhoff Endeavour 5.B Move+ Trekking E-Bike 2024',
+                shop: 'zweirad-shop.de',
+                price: '2.799,00 €',
+                unavailable: true
+            });
+            saveWishlist(list);
+        }
+
         function init() {
+            seedUnavailableDemo();
             injectHearts();
             initSidebar();
             updateBadge();
