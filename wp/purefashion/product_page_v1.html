@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reell Betty Baggy Jeans - Purefashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #222;
+            background: #fff;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .logo {
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            list-style: none;
+            gap: 0;
+            justify-content: center;
+        }
+
+        .nav li a {
+            display: block;
+            padding: 20px 14px;
+            font-size: 11px;
+            color: #222;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            transition: color 0.2s;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .nav li a:hover,
+        .nav li.active a {
+            border-bottom-color: #000;
+        }
+
+        .nav-search {
+            position: relative;
+        }
+
+        .nav-search input {
+            width: 140px;
+            padding: 10px 36px 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 13px;
+            font-family: inherit;
+            background: #f8f8f8;
+            outline: none;
+        }
+
+        .nav-search input:focus {
+            border-color: #000;
+            background: #fff;
+        }
+
+        .nav-search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            pointer-events: none;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .nav-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: #222;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 24px;
+        }
+
+        .breadcrumb {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumb a:hover {
+            color: #000;
+        }
+
+        .breadcrumb-separator {
+            color: #ccc;
+        }
+
+        /* Product Layout */
+        .product-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+            display: grid;
+            grid-template-columns: 1fr 480px;
+            gap: 64px;
+        }
+
+        /* Product Gallery */
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+
+        .product-image-main {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-wishlist-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-wishlist-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .product-wishlist-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #222;
+            stroke-width: 2;
+            fill: none;
+            transition: fill 0.2s, stroke 0.2s;
+        }
+
+        .product-wishlist-btn:hover svg,
+        .product-wishlist-btn.active svg {
+            fill: #e31e24;
+            stroke: #e31e24;
+        }
+
+        /* Product Info */
+        .product-info {
+            padding-top: 16px;
+        }
+
+        .product-brand {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .product-brand a:hover {
+            color: #000;
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .product-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .product-price-main {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .product-price-info {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+
+        .product-price-info strong {
+            color: #222;
+        }
+
+        /* Size Selection */
+        .product-section {
+            margin-bottom: 32px;
+        }
+
+        .product-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .size-option {
+            min-width: 56px;
+            height: 44px;
+            padding: 0 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .size-option:hover {
+            border-color: #000;
+        }
+
+        .size-option.active {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        .size-option.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Offers Section */
+        .offers-section {
+            background: transparent;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .offers-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .offers-title {
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .condition-toggle {
+            display: flex;
+            background: #eee;
+            border-radius: 25px;
+            padding: 4px;
+        }
+
+        .condition-btn {
+            padding: 8px 18px;
+            border: none;
+            background: transparent;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .condition-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        .condition-btn:not(.active):hover {
+            color: #222;
+        }
+
+        /* Single Offer */
+        .offer-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 90px 1fr 130px;
+            gap: 24px;
+            align-items: center;
+            transition: all 0.2s ease;
+            position: relative;
+            border: 1px solid #eee;
+        }
+
+        .offer-card:hover {
+            border-color: #ddd;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .offer-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .offer-card.best-price {
+            border-color: #ddd;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .offer-card.best-price::before {
+            content: "Bester Preis";
+            position: absolute;
+            top: -1px;
+            left: 20px;
+            background: #2e7d32;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 5px 12px;
+            border-radius: 0 0 6px 6px;
+        }
+
+        .offer-shop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+        }
+
+        .offer-shop-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #f8f8f8;
+            padding: 6px;
+        }
+
+        .offer-shop-info h4 {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #222;
+        }
+
+        .offer-shop-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 11px;
+            color: #888;
+        }
+
+        .offer-shop-rating svg {
+            width: 12px;
+            height: 12px;
+            fill: #ffc107;
+            flex-shrink: 0;
+        }
+
+        .offer-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .offer-delivery {
+            font-size: 14px;
+            color: #222;
+            font-weight: 500;
+        }
+
+        .offer-delivery.fast {
+            color: #2e7d32;
+        }
+
+        .offer-shipping {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .offer-shipping.free {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .offer-price-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .offer-price {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .offer-btn {
+            display: block;
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .offer-btn:hover {
+            background: #222;
+            transform: translateY(-1px);
+        }
+
+        /* Show More */
+        .show-more-offers {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #222;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 12px;
+        }
+
+        .show-more-offers:hover {
+            border-color: #000;
+        }
+
+        /* Product Description */
+        .product-description {
+            padding-top: 32px;
+            border-top: 1px solid #eee;
+        }
+
+        .product-description h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .product-description p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .product-specs {
+            margin-top: 24px;
+        }
+
+        .product-spec {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .product-spec:last-child {
+            border-bottom: none;
+        }
+
+        .product-spec-label {
+            width: 140px;
+            color: #666;
+            flex-shrink: 0;
+        }
+
+        .product-spec-value {
+            font-weight: 500;
+        }
+
+        .product-features {
+            margin: 20px 0;
+            padding-left: 20px;
+            color: #444;
+        }
+
+        .product-features li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .product-note {
+            margin-top: 20px;
+            padding: 16px;
+            background: #fff8e6;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .product-note strong {
+            color: #222;
+        }
+
+        /* Similar Products */
+        .similar-products {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 64px 24px;
+            border-top: 1px solid #eee;
+        }
+
+        .similar-products-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            letter-spacing: -0.3px;
+        }
+
+        .similar-products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .similar-product-card {
+            cursor: pointer;
+        }
+
+        .similar-product-card:hover .similar-product-image img {
+            transform: scale(1.03);
+        }
+
+        .similar-product-image {
+            position: relative;
+            aspect-ratio: 3 / 4;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .similar-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .similar-product-wishlist {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .similar-product-card:hover .similar-product-wishlist {
+            opacity: 1;
+        }
+
+        .similar-product-wishlist svg {
+            width: 18px;
+            height: 18px;
+            stroke: #222;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .similar-product-wishlist:hover svg {
+            fill: #e31e24;
+            stroke: #e31e24;
+        }
+
+        .similar-product-brand {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .similar-product-name {
+            font-size: 13px;
+            color: #222;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .similar-product-price {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .similar-products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .similar-products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .similar-products {
+                padding: 48px 16px;
+            }
+        }
+
+        /* Ask ChatGPT Section */
+        .ask-chatgpt-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 64px 24px;
+            border-top: 1px solid #eee;
+        }
+
+        .ask-chatgpt-container {
+            text-align: center;
+        }
+
+        .ask-chatgpt-container h2 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            color: #666;
+        }
+
+        .ask-chatgpt-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .ask-chatgpt-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #222;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .ask-chatgpt-btn:hover {
+            background: #000;
+            border-color: #000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        @media (max-width: 768px) {
+            .ask-chatgpt-section {
+                padding: 48px 16px;
+            }
+            .ask-chatgpt-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .ask-chatgpt-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        /* Product Details SEO */
+        .product-details-seo {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+        }
+
+        .product-details-seo-container {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            border-radius: 16px;
+            padding: 40px 48px;
+        }
+
+        .product-details-seo-container h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #222;
+            letter-spacing: -0.3px;
+        }
+
+        .product-details-seo-container h3 {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 28px 0 16px;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .product-details-seo-container h3:first-of-type {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+
+        .product-details-seo-container > p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        .product-details-list {
+            list-style: none;
+            padding: 0;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .product-details-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .product-details-list li:last-child {
+            border-bottom: none;
+        }
+
+        .product-details-list li::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: #000;
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .product-details-list li strong {
+            color: #222;
+        }
+
+        .product-details-list a {
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid #000;
+            transition: all 0.2s;
+        }
+
+        .product-details-list a:hover {
+            color: #666;
+            border-color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .product-details-seo {
+                padding: 0 16px 32px;
+            }
+            .product-details-seo-container {
+                padding: 20px;
+                border-radius: 12px;
+            }
+            .product-details-seo-container h2 {
+                font-size: 16px;
+                margin-bottom: 12px;
+            }
+            .product-details-seo-container h3 {
+                font-size: 12px;
+                margin: 20px 0 12px;
+            }
+            .product-details-seo-container > p {
+                font-size: 13px;
+            }
+            .product-details-list {
+                font-size: 13px;
+            }
+            .product-details-list li {
+                padding: 8px 0;
+                display: block;
+            }
+            .product-details-list li::before {
+                display: inline-block;
+                margin-right: 8px;
+                margin-top: 0;
+                vertical-align: middle;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            padding: 64px 24px 32px;
+            color: #fff;
+            margin-top: 64px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-list {
+            list-style: none;
+        }
+
+        .footer-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-list a {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.2s;
+        }
+
+        .footer-list a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Wishlist Toggle & Badge */
+        .wishlist-toggle {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .wishlist-toggle svg {
+            width: 22px;
+            height: 22px;
+            stroke: #222;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .wishlist-badge {
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            background: #e31e24;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .wishlist-overlay {
+            position: fixed;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s, opacity 0.3s;
+        }
+
+        .wishlist-overlay.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .wishlist-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .wishlist-sidebar {
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 420px;
+            max-width: 100%;
+            background: #fff;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .wishlist-overlay.open .wishlist-sidebar {
+            transform: translateX(0);
+        }
+
+        .wishlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .wishlist-header-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .wishlist-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            color: #222;
+        }
+
+        .wishlist-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 24px;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            color: #999;
+            padding: 60px 0;
+            font-size: 14px;
+        }
+
+        .wishlist-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: flex-start;
+        }
+
+        .wishlist-item-image {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #f5f5f5;
+            flex-shrink: 0;
+        }
+
+        .wishlist-item-info { flex: 1; min-width: 0; }
+
+        .wishlist-item-brand {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .wishlist-item-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 4px;
+            color: #222;
+        }
+
+        .wishlist-item-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #e31e24;
+            margin-top: 8px;
+        }
+
+        .wishlist-item-remove {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            padding: 4px;
+            flex-shrink: 0;
+            transition: color 0.2s;
+        }
+
+        .wishlist-item-remove:hover {
+            color: #e31e24;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .product-gallery {
+                position: static;
+            }
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 24px;
+            height: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+        }
+
+        .burger-menu span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #222;
+            transition: all 0.3s;
+            transform-origin: center;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+
+            .nav-container {
+                padding: 12px 16px;
+                justify-content: space-between;
+            }
+
+            .logo {
+                order: -1;
+            }
+
+            .nav-search {
+                order: 1;
+            }
+
+            .nav-icons {
+                order: 2;
+            }
+
+            .burger-menu {
+                order: 3;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                padding: 16px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li a {
+                padding: 12px 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-search input {
+                width: 100px;
+            }
+
+            .logo-img {
+                height: 32px;
+                width: auto;
+            }
+
+            .breadcrumb-wrapper {
+                padding: 12px 16px;
+            }
+
+            .breadcrumb {
+                font-size: 11px;
+                flex-wrap: wrap;
+            }
+
+            .product-container {
+                padding: 0 16px 32px;
+            }
+
+            .product-image-main {
+                border-radius: 0;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                background: #fff;
+            }
+
+            .product-image-main img {
+                border-radius: 0;
+                width: auto;
+                max-width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .product-title {
+                font-size: 20px;
+            }
+
+            .product-price-main {
+                font-size: 22px;
+            }
+
+            .offer-card {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 16px;
+                padding-top: 20px;
+            }
+
+            .offer-card.best-price {
+                padding-top: 40px;
+            }
+
+            .offer-card.best-price::before {
+                top: 12px;
+                left: 16px;
+                border-radius: 4px;
+            }
+
+            .offer-shop {
+                flex-direction: row;
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            .offer-shop-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .offer-details,
+            .offer-price-section {
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            .offer-price-section {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .offer-btn {
+                padding: 12px 24px;
+            }
+
+            .similar-products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .similar-products {
+                padding: 32px 16px;
+            }
+
+            .ask-chatgpt-section {
+                padding: 32px 16px;
+            }
+
+            .ask-chatgpt-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ask-chatgpt-btn {
+                justify-content: center;
+                width: auto;
+                min-width: 200px;
+            }
+
+            .product-details-seo {
+                padding: 0 16px 32px;
+            }
+
+            .product-details-seo-container {
+                padding: 24px;
+            }
+
+            .footer {
+                padding: 40px 16px 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .similar-products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .similar-product-name {
+                font-size: 11px;
+                -webkit-line-clamp: 1;
+            }
+
+            .similar-product-brand {
+                font-size: 9px;
+            }
+
+            .similar-product-price {
+                font-size: 13px;
+            }
+
+            .ask-chatgpt-container h2 {
+                font-size: 11px;
+            }
+
+            .ask-chatgpt-btn {
+                padding: 12px 16px;
+                font-size: 12px;
+            }
+
+            .product-details-seo-container h2 {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+
+            .product-details-list li {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer {
+                padding: 32px 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <button class="burger-menu" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="#" class="logo"><img src="purefashion_de-inverted.gif" alt="PUREFASHION." class="logo-img"></a>
+            <ul class="nav-menu">
+                <li><a href="#">Accessoires</a></li>
+                <li><a href="#">Damen</a></li>
+                <li><a href="#">Handarbeit</a></li>
+                <li><a href="#">Herren</a></li>
+                <li><a href="#">Kinder & Babys</a></li>
+                <li><a href="#">Schmuck</a></li>
+                <li><a href="#">Schuhe</a></li>
+                <li><a href="#">Taschen & Gepäck</a></li>
+                <li><a href="#">Uhren</a></li>
+            </ul>
+            <div class="nav-search">
+                <input type="text" placeholder="Suche..." aria-label="Suche">
+                <span class="nav-search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </span>
+            </div>
+            <div class="nav-icons">
+                <button class="nav-icon wishlist-toggle" title="Merkliste" aria-label="Merkliste öffnen">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="wishlist-badge" style="display:none;">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-wrapper">
+        <div class="breadcrumb">
+            <a href="#">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="#">Damen</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="#">Jeans</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>Reell Betty Baggy</span>
+        </div>
+    </div>
+
+    <!-- Product Content -->
+    <div class="product-container">
+        <!-- Product Gallery -->
+        <div class="product-gallery">
+            <div class="product-image-main">
+                <img src="images/reell-betty-baggy.jpg" alt="Reell Betty Baggy Jeans">
+                <button class="product-wishlist-btn" title="Zur Merkliste hinzufügen">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <div class="product-brand"><a href="#">Reell</a></div>
+            <h1 class="product-title">Jeanshose für Damen Betty Baggy – Boyfriendhose Black Wash Größe 26</h1>
+
+            <div class="product-price-main">ab 50,29 €</div>
+
+            <!-- Offers -->
+            <div class="offers-section">
+                <div class="offers-header">
+                    <div class="offers-title">Preisvergleich</div>
+                    <div class="condition-toggle">
+                        <button class="condition-btn active">Neu</button>
+                        <button class="condition-btn">Gebraucht</button>
+                    </div>
+                </div>
+
+                <!-- Best Offer -->
+                <div class="offer-card best-price">
+                    <div class="offer-shop">
+                        <img src="images/shop-247style.jpg" alt="247style.de" class="offer-shop-logo">
+                        <div class="offer-shop-info">
+                            <h4>247style.de</h4>
+                            <div class="offer-shop-rating">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                Neuer Shop
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offer-details">
+                        <div class="offer-delivery fast">1-2 Werktage</div>
+                        <div class="offer-shipping free">Kostenloser Versand</div>
+                    </div>
+                    <div class="offer-price-section">
+                        <div class="offer-price">50,29 €</div>
+                        <a href="#" class="offer-btn">Zum Shop</a>
+                    </div>
+                </div>
+
+                <!-- Other Offers -->
+                <div class="offer-card">
+                    <div class="offer-shop">
+                        <img src="images/shop-amazon.jpg" alt="Amazon" class="offer-shop-logo">
+                        <div class="offer-shop-info">
+                            <h4>Amazon</h4>
+                            <div class="offer-shop-rating">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                1,6 (24.289)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offer-details">
+                        <div class="offer-delivery">4-5 Werktage</div>
+                        <div class="offer-shipping free">Kostenloser Versand</div>
+                    </div>
+                    <div class="offer-price-section">
+                        <div class="offer-price">51,29 €</div>
+                        <a href="#" class="offer-btn">Zum Shop</a>
+                    </div>
+                </div>
+
+                <div class="offer-card">
+                    <div class="offer-shop">
+                        <img src="images/shop-amazon.jpg" alt="Amazon" class="offer-shop-logo">
+                        <div class="offer-shop-info">
+                            <h4>Amazon</h4>
+                            <div class="offer-shop-rating">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                1,6 (24.289)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offer-details">
+                        <div class="offer-delivery">4-5 Werktage</div>
+                        <div class="offer-shipping free">Kostenloser Versand</div>
+                    </div>
+                    <div class="offer-price-section">
+                        <div class="offer-price">52,28 €</div>
+                        <a href="#" class="offer-btn">Zum Shop</a>
+                    </div>
+                </div>
+
+                <button class="show-more-offers">+ 3 weitere Angebote anzeigen</button>
+            </div>
+
+            <!-- Product Description -->
+            <div class="product-description">
+                <h3>Produktbeschreibung</h3>
+                <p>Die Women Betty: eine lässige Baggy-Silhouette mit raffinierter Five-Pocket-Konstruktion. Das Modell sitzt hoch in der Taille und fällt an der Hüfte mit einem extrem weiten Bein aus. Hergestellt aus ausgewählten, von der Arbeitswelt inspirierten Stoffen in einer Reihe von authentischen Waschungen. Für eine definierte, hohe Taille oder eine Nummer größer für eine tief sitzende Passform; von umgeschlagenen Bündchen bis hin zu bodenlangen Beinen. Hochtaillierter Schnitt. Ultraweites, gerades Bein. Original Five-Pocket-Konstruktion. Workwear-inspirierte Stoffe. Dieses Modell fällt deutlich kleiner aus. Bestell bitte zwei Nummern größer.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar Products (Varianten) -->
+    <section class="similar-products">
+        <h2 class="similar-products-title">Ähnliche Produkte</h2>
+        <div class="similar-products-grid">
+            <a href="#" class="similar-product-card">
+                <div class="similar-product-image">
+                    <img src="images/reell-betty-baggy.jpg" alt="Reell Betty Baggy">
+                    <button class="similar-product-wishlist" title="Zur Merkliste">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </button>
+                </div>
+                <div class="similar-product-brand">Reell</div>
+                <div class="similar-product-name">Betty Baggy – Boyfriendhose Black Wash Größe 25</div>
+                <div class="similar-product-price">ab 69,95 €</div>
+            </a>
+
+            <a href="#" class="similar-product-card">
+                <div class="similar-product-image">
+                    <img src="images/reell-betty-baggy.jpg" alt="Reell Betty Baggy">
+                    <button class="similar-product-wishlist" title="Zur Merkliste">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </button>
+                </div>
+                <div class="similar-product-brand">Reell</div>
+                <div class="similar-product-name">Betty Baggy – Boyfriendhose Black Wash Größe 27</div>
+                <div class="similar-product-price">ab 69,95 €</div>
+            </a>
+
+            <a href="#" class="similar-product-card">
+                <div class="similar-product-image">
+                    <img src="images/reell-betty-baggy.jpg" alt="Reell Betty Baggy">
+                    <button class="similar-product-wishlist" title="Zur Merkliste">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </button>
+                </div>
+                <div class="similar-product-brand">Reell</div>
+                <div class="similar-product-name">Betty Baggy – Boyfriendhose Black Wash Größe 28</div>
+                <div class="similar-product-price">ab 69,95 €</div>
+            </a>
+
+            <a href="#" class="similar-product-card">
+                <div class="similar-product-image">
+                    <img src="images/reell-betty-baggy.jpg" alt="Reell Betty Baggy">
+                    <button class="similar-product-wishlist" title="Zur Merkliste">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </button>
+                </div>
+                <div class="similar-product-brand">Reell</div>
+                <div class="similar-product-name">Betty Baggy – Boyfriendhose Black Wash Größe 29</div>
+                <div class="similar-product-price">ab 69,95 €</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Ask ChatGPT -->
+    <section class="ask-chatgpt-section">
+        <div class="ask-chatgpt-container">
+            <h2>🤖 Frag unsere KI</h2>
+            <div class="ask-chatgpt-buttons">
+                <a href="#" class="ask-chatgpt-btn">
+                    <span class="btn-icon">💡</span>
+                    <span>Ist es den Preis wert?</span>
+                </a>
+                <a href="#" class="ask-chatgpt-btn">
+                    <span class="btn-icon">🔄</span>
+                    <span>Bessere Alternativen?</span>
+                </a>
+                <a href="#" class="ask-chatgpt-btn">
+                    <span class="btn-icon">⭐</span>
+                    <span>Was sagen Nutzer?</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details SEO -->
+    <section class="product-details-seo">
+        <div class="product-details-seo-container">
+            <h2>Reell Damen Jeanshose Women Betty Baggy – Details</h2>
+            <h3>✓ Immer günstig im Preisvergleich</h3>
+            <p>Wir haben 6 Preise für Reell Damen Jeanshose Women Betty Baggy 2108-002-02-124 Black Wash 50/50-26 gefunden. Unsere Preisliste ist immer transparent und nach günstigem Preis sortiert.</p>
+
+            <h3>Preisinformationen</h3>
+            <ul class="product-details-list">
+                <li><strong>Günstigster Preis: 50,29 €</strong></li>
+                <li>Der günstigste Preis wird vom Online-Shop <a href="#">247style.de</a> angegeben. Dort können Sie das Angebot bestellen.</li>
+                <li>Die Preisspanne liegt zwischen <strong>50,29 € – 71,51 €</strong> bei insgesamt 6 Angeboten.</li>
+                <li><strong>Zahlmöglichkeiten:</strong> Der Online-Shop <a href="#">247style.de</a> bietet Rechnung, PayPal, Sofortüberweisung, Visa, Mastercard, Vorkasse, AmazonPay an.</li>
+                <li><strong>Lieferbarkeit:</strong> Die kürzeste Lieferzeit beträgt 1-2 Werktage bei <a href="#">247style.de</a>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-title">Service</div>
+                    <ul class="footer-list">
+                        <li><a href="#">Hilfe & Kontakt</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Versand & Lieferung</a></li>
+                        <li><a href="#">Rückgabe</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Unternehmen</div>
+                    <ul class="footer-list">
+                        <li><a href="#">Über uns</a></li>
+                        <li><a href="#">Karriere</a></li>
+                        <li><a href="#">Presse</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Rechtliches</div>
+                    <ul class="footer-list">
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">AGB</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Zahlungsarten</div>
+                    <ul class="footer-list">
+                        <li><a href="#">PayPal</a></li>
+                        <li><a href="#">Kreditkarte</a></li>
+                        <li><a href="#">Rechnung</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Purefashion - Preisvergleich für Mode & Accessoires (Prototyp)
+            </div>
+        </div>
+    </footer>
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-overlay">
+        <div class="wishlist-backdrop"></div>
+        <div class="wishlist-sidebar">
+            <div class="wishlist-header">
+                <span class="wishlist-header-title">Merkliste</span>
+                <button class="wishlist-close" aria-label="Schließen">&times;</button>
+            </div>
+            <div class="wishlist-items">
+                <div class="wishlist-empty">Deine Merkliste ist leer</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        // Burger Menu
+        var burgerMenu = document.querySelector('.burger-menu');
+        var navMenu = document.querySelector('.nav-menu');
+        if (burgerMenu && navMenu) {
+            burgerMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                burgerMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            navMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (navMenu.classList.contains('active') &&
+                    !navMenu.contains(e.target) &&
+                    !burgerMenu.contains(e.target)) {
+                    burgerMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
+        // Wishlist
+        function getWishlist() {
+            try { return JSON.parse(localStorage.getItem('pf_wishlist')) || []; }
+            catch(e) { return []; }
+        }
+
+        function saveWishlist(list) {
+            localStorage.setItem('pf_wishlist', JSON.stringify(list));
+        }
+
+        function updateBadge() {
+            var badge = document.querySelector('.wishlist-badge');
+            var count = getWishlist().length;
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'flex' : 'none';
+            }
+        }
+
+        function renderWishlistItems() {
+            var container = document.querySelector('.wishlist-items');
+            var wishlist = getWishlist();
+            if (!container) return;
+
+            if (wishlist.length === 0) {
+                container.innerHTML = '<div class="wishlist-empty">Deine Merkliste ist leer</div>';
+                return;
+            }
+
+            container.innerHTML = wishlist.map(function(item) {
+                return '<div class="wishlist-item" data-id="' + item.id + '">' +
+                    '<img src="' + item.image + '" alt="' + item.title + '" class="wishlist-item-image">' +
+                    '<div class="wishlist-item-info">' +
+                        '<div class="wishlist-item-brand">' + item.brand + '</div>' +
+                        '<div class="wishlist-item-title">' + item.title + '</div>' +
+                        '<div class="wishlist-item-price">' + item.price + '</div>' +
+                    '</div>' +
+                    '<button class="wishlist-item-remove" title="Entfernen">' +
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
+                    '</button>' +
+                '</div>';
+            }).join('');
+
+            container.querySelectorAll('.wishlist-item-remove').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var id = btn.closest('.wishlist-item').dataset.id;
+                    var wishlist = getWishlist().filter(function(w) { return w.id !== id; });
+                    saveWishlist(wishlist);
+                    updateBadge();
+                    renderWishlistItems();
+                });
+            });
+        }
+
+        // Product page wishlist button
+        var productWishlistBtn = document.querySelector('.product-wishlist-btn');
+        if (productWishlistBtn) {
+            var productData = {
+                id: 'product-reell-betty-baggy',
+                image: document.querySelector('.product-image-main img') ? document.querySelector('.product-image-main img').src : '',
+                brand: 'Reell',
+                title: document.querySelector('.product-title') ? document.querySelector('.product-title').textContent : '',
+                price: document.querySelector('.product-price-main') ? document.querySelector('.product-price-main').textContent.trim() : ''
+            };
+
+            // Check initial state
+            var wishlist = getWishlist();
+            if (wishlist.some(function(w) { return w.id === productData.id; })) {
+                productWishlistBtn.classList.add('active');
+            }
+
+            productWishlistBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var wishlist = getWishlist();
+                var index = -1;
+                for (var i = 0; i < wishlist.length; i++) {
+                    if (wishlist[i].id === productData.id) { index = i; break; }
+                }
+                if (index >= 0) {
+                    wishlist.splice(index, 1);
+                    productWishlistBtn.classList.remove('active');
+                } else {
+                    wishlist.push(productData);
+                    productWishlistBtn.classList.add('active');
+                }
+                saveWishlist(wishlist);
+                updateBadge();
+                renderWishlistItems();
+            });
+        }
+
+        // Sidebar toggle
+        var toggle = document.querySelector('.wishlist-toggle');
+        var overlay = document.querySelector('.wishlist-overlay');
+        var closeBtn = document.querySelector('.wishlist-close');
+        var backdrop = document.querySelector('.wishlist-backdrop');
+
+        if (toggle && overlay) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                renderWishlistItems();
+                overlay.classList.add('open');
+            });
+        }
+        if (closeBtn) closeBtn.addEventListener('click', function() { overlay.classList.remove('open'); });
+        if (backdrop) backdrop.addEventListener('click', function() { overlay.classList.remove('open'); });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && overlay && overlay.classList.contains('open')) {
+                overlay.classList.remove('open');
+            }
+        });
+
+        updateBadge();
+    })();
+    </script>
+</body>
+</html>
